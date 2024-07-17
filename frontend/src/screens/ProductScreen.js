@@ -30,7 +30,7 @@ function ProductScreen() {
                         </ListGroup.Item>
 
                         <ListGroup.Item>
-                            <Rating value={product.rating} text={ `${product.numReviews} reviews` } color={'#f8e825'} />
+                            <Rating value={product.rating} text={ `${product.review_count} reviews` } color={'#f8e825'} />
                         </ListGroup.Item>
 
                         <ListGroup.Item>
@@ -62,7 +62,7 @@ function ProductScreen() {
                             </ListGroup.Item>
 
                             <ListGroup.Item>
-                                <Button className='btn-block' disabled={product.countInStock == 0} type='button'>Add to Cart</Button>
+                                <Button className='btn-block' disabled={product.count_in_stock == 0} type='button'>Add to Cart</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
