@@ -8,7 +8,7 @@ from datetime import datetime
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
-    # image = models.ImageField(upload_to="photos/%Y/%m/%d/", blank=True, null=True)
+    image = models.ImageField(upload_to="photos/products/%Y/%m/%d/", blank=True, null=True)
     brand = models.CharField(max_length=200, blank=True, null=True)
     category = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
@@ -55,7 +55,6 @@ class OrderItem(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     price = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
     quantity = models.IntegerField(blank=True, null=True, default=0)
-    # image = models.ImageField(upload_to="photos/%Y/%m/%d/", blank=True, null=True)
     created_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
