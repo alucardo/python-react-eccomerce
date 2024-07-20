@@ -1,4 +1,3 @@
-import axios from "axios"
 import { CARD_ADD_ITEM, CARD_REMOVE_ITEM } from '../constants/cartConstants'
 
 
