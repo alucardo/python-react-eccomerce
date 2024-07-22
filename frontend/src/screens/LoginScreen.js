@@ -15,7 +15,7 @@ function LoginScreen() {
 
     const navigate = useNavigate()
     const searchLocation = useLocation().search
-    const red = searchLocation ? searchLocation.split('=')[1] : '/'
+    const red = searchLocation ? `/${searchLocation.split('=')[1]}` : '/'
 
     const userLogin = useSelector( state => state.userLogin )
     const { error, loading, userInfo } = userLogin
