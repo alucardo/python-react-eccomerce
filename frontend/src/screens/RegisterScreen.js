@@ -15,7 +15,6 @@ function RegisterScreen() {
     const [message, setMessage] = useState('')
 
     const dispatch = useDispatch()
-
     const navigate = useNavigate()
     const searchLocation = useLocation().search
     const red = searchLocation ? searchLocation.split('=')[1] : '/'
@@ -41,7 +40,7 @@ function RegisterScreen() {
      return (
          <FormContainer>
             <h1>Register</h1>
-             { message && <Message variant='danger'>{message}</Message> }
+            { message && <Message variant='danger'>{message}</Message> }
             { error && <Message variant='danger'>{error}</Message> }
             { loading && <Loader/> }
             <Form onSubmit={submitHandler}>

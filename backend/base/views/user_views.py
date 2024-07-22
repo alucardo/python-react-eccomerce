@@ -14,9 +14,7 @@ from base.serializers import UserSerializer, UserSerializerWithToken
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
-
-        serializer = UserSerializer(self.user).data
-
+        serializer = UserSerializerWithToken(self.user).data
         for k, v in serializer.items():
             data[k] = v
 
@@ -41,6 +39,23 @@ def registerUser(request):
     except:
         message = {'detail': 'Something went wrong'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateUserProfile(request):
+    user = request.user
+    data = request.data
+    user.first_name = data['name']
+    user.username = data['email']
+    user.email = data['email']
+    if data['password'] != '':
+        user.password = make_password(data['password'])
+    user.save()
+
+    serializer = UserSerializerWithToken(user, many=False)
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
